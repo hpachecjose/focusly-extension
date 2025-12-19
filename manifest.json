@@ -1,0 +1,53 @@
+{
+    "name": "Focusly",
+    "short_name": "Focusly",
+    "version": "1.0.0",
+    "description": "A productivity app to help you stay focused.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "ff0000ff",
+    "icons": {
+        "src": "logo.png",
+        "sizes": "192x192",
+        "type": "icons/png",
+        "16": "icons/16px.png",
+        "32": "icons/32px.png",
+        "48": "icons/48px.png",
+        "128": "icons/128px.png"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/16px.png",
+            "32": "icons/32px.png",
+            "48": "icons/48px.png",
+            "128": "icons/128px.png"
+        }
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "contentScript.js"
+            ],
+            "css": [
+                "styles.css"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "permissions": [
+        "storage",
+        "tabs",
+        "activeTab",
+        "notifications",
+        "cookies",
+        "history"
+    ]
+}
