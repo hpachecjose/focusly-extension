@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/icons/128px.png" alt="Focusly Logo" width="128" height="128">
+ 
   <h1>Focusly</h1>
   <p><strong>Recupere seu tempo. Elimine distrações. Mantenha o foco.</strong></p>
 </div>
