@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focusly</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="app-container">
+    <header class="header">
+      <div class="logo">
+        <a href="#/"><img src="/assets/icons/48px.png" alt="logo"></a>
+      </div>
+      <button id="btn-options" class="icon-button" title="Configurações">⚙️</button>
+    </header>
+
+    <main class="main-content">
+      <div class="current-site-card">
+        <div class="card-header">
+          <span class="status-dot"></span> Site Atual
+        </div>
+        <h2 id="current-domain" class="site-name">Nenhum site</h2>
+        <div class="timer-display">
+          <span id="time-display">00m 00s</span>
+        </div>
+        <div class="progress-bar-container">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <p id="limit-info" class="limit-text">Sem limite definido</p>
+      </div>
+
+      <div class="daily-stats">
+        <h3>Hoje</h3>
+        <div id="stats-list" class="stats-list">
+          <!-- Lista injetada via JS -->
+          <div class="empty-state">Nenhum dado ainda hoje.</div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="quote">"Aprenda a gerenciar seu tempo."</p>
+    </footer>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+
+</html>

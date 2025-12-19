@@ -1,53 +1,81 @@
 {
-    "name": "Focusly",
-    "short_name": "Focusly",
-    "version": "1.0.0",
-    "description": "A productivity app to help you stay focused.",
-    "start_url": "/index.html",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "ff0000ff",
-    "icons": {
-        "src": "logo.png",
-        "sizes": "192x192",
-        "type": "icons/png",
-        "16": "icons/16px.png",
-        "32": "icons/32px.png",
-        "48": "icons/48px.png",
-        "128": "icons/128px.png"
+  "manifest_version": 3,
+  "name": "Focusly",
+  "short_name": "Focusly",
+  "version": "1.0.0",
+  "description": "Stay focused by tracking time on distracting websites and blocking them when limits are reached.",
+  "author": "Henri",
+  "icons": {
+    "16": "assets/icons/16px.png",
+    "32": "assets/icons/32px.png",
+    "48": "assets/icons/48px.png",
+    "128": "assets/icons/128px.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "assets/icons/16px.png",
+      "32": "assets/icons/32px.png",
+      "48": "assets/icons/48px.png",
+      "128": "assets/icons/128px.png"
     },
-    "action": {
-        "default_popup": "popup.html",
-        "default_icon": {
-            "16": "icons/16px.png",
-            "32": "icons/32px.png",
-            "48": "icons/48px.png",
-            "128": "icons/128px.png"
-        }
-    },
-    "background": {
-        "service_worker": "background.js"
-    },
-    "content_scripts": [
-        {
-            "matches": [
-                "<all_urls>"
-            ],
-            "js": [
-                "contentScript.js"
-            ],
-            "css": [
-                "styles.css"
-            ],
-            "run_at": "document_idle"
-        }
-    ],
-    "permissions": [
-        "storage",
-        "tabs",
-        "activeTab",
-        "notifications",
-        "cookies",
-        "history"
-    ]
+    "default_title": "Focusly"
+  },
+  "background": {
+    "service_worker": "background/serviceWorker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content/tracker.js"
+      ],
+      "css": [
+        "content/styles.css"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false,
+      "match_about_blank": false,
+      "match_origin_as_fallback": false
+    }
+  ],
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "notifications",
+    "alarms",
+    "idle"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "options_page": "options/options.html",
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "Command+Shift+F"
+      }
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "pages/blocked.html",
+        "assets/icons/*.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "minimum_chrome_version": "88",
+  "offline_enabled": true
 }
